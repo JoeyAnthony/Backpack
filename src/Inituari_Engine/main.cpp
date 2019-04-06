@@ -14,7 +14,7 @@ using namespace inituari;
 	int main()
 	{
 		std::cout << "Hello World!\n";
-		engine::initialize();
+		inituari::INIT_ENGINE();
 		std::cout << "Shut down!\n";
 		inituari::run_all_tests();
 

@@ -5,7 +5,7 @@
 
 namespace inituari{
 	namespace subsystems {
-		//forward declerations
+		//forward declarations
 		struct SubsystemManager;
 		struct LogManager;
 		struct MemoryManager;

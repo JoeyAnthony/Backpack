@@ -1,8 +1,8 @@
 #pragma once
-namespace engine {
+namespace inituari {
 
 	/*
 	* Initialize engine systems
 	*/
-	void initialize();
+	void INIT_ENGINE();
 }

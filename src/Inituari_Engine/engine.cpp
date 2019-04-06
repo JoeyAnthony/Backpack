@@ -2,10 +2,14 @@
 #include "Engine.h"
 #include <iostream>
 
-void engine::initialize()
-{
-	std::cout << "Initialize\n";
+namespace inituari {
 
-	//initialize subsystemmanager
-	//initialize editor
+	void INIT_ENGINE()
+	{
+		std::cout << "Initialize\n";
+
+
+		//initialize subsystemmanager
+		//initialize editor
+	}
 }
