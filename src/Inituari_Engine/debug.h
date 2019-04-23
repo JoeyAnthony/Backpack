@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-
 namespace inituari {
 
 #if ASSERTIONS_ENABLED
@@ -16,9 +15,11 @@ namespace inituari {
 #define ASSERT(expr) \
 	if(expr){} \
 	else { \
-		std::cout << __FILE__ << ", " << __LINE__ << std::endl; \
-		debug_break() \
+		assert_fail(__FILE__, __LINE__, #expr);\
 	}
-
+#else
+#define ASSERT()
 #endif
+
+	void assert_fail(const char* file, int line, _Printf_format_string_ const char* fmt, ...);
 }

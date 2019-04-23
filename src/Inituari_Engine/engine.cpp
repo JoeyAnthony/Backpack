@@ -1,15 +1,18 @@
 #include "pch.h"
-#include "Engine.h"
 #include <iostream>
+
+#include "Engine.h"
+
+#include "Subsystems/subsystem_manager.h"
 
 namespace inituari {
 
 	void INIT_ENGINE()
 	{
-		std::cout << "Initialize\n";
-
-
 		//initialize subsystemmanager
-		//initialize editor
+		subsystem_manager::initialize(g_subsystemManager);
+
+
+		//TODO initialize editor
 	}
 }

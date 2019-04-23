@@ -88,9 +88,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASSERTIONS_ENABLED</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -122,9 +123,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASSERTIONS_ENABLED</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,21 +161,31 @@
     <ClInclude Include="Containers\container_types.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="engine.h" />
+    <ClInclude Include="Math\math.h" />
+    <ClInclude Include="Memory\MallocAllocator.h" />
     <ClInclude Include="Memory\allocators.h" />
     <ClInclude Include="Memory\memory_tools.h" />
     <ClInclude Include="os.h" />
+    <ClInclude Include="Memory\PoolAllocator.h" />
     <ClInclude Include="Subsystems\log_manager.h" />
     <ClInclude Include="Subsystems\memory_manager.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Subsystems\subsystem_manager.h" />
-    <ClInclude Include="Subsystems\subsystem_types.h" />
     <ClInclude Include="unit_tests.h" />
+    <ClInclude Include="Math\math_types.h" />
+    <ClInclude Include="Math\vector2.h" />
+    <ClInclude Include="Math\vector3.h" />
+    <ClInclude Include="Math\vector4.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="debug.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Math\math.cpp" />
     <ClCompile Include="Memory\allocators.cpp" />
+    <ClCompile Include="Memory\MallocAllocator.cpp" />
+    <ClCompile Include="Memory\PoolAllocator.cpp" />
     <ClCompile Include="Subsystems\log_manager.cpp" />
     <ClCompile Include="Subsystems\memory_manager.cpp" />
     <ClCompile Include="pch.cpp">
@@ -184,6 +196,9 @@
     </ClCompile>
     <ClCompile Include="Subsystems\subsystem_manager.cpp" />
     <ClCompile Include="unit_tests.cpp" />
+    <ClCompile Include="Math\vector2.cpp" />
+    <ClCompile Include="Math\vector3.cpp" />
+    <ClCompile Include="Math\vector4.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
