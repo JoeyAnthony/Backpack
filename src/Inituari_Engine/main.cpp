@@ -12,8 +12,9 @@
 #include "Subsystems/log_manager.h"
 #include "Subsystems/subsystem_manager.h"
 #include <vector>
-#include "Math/vector3.h"
 
+#include "Math/vector3.h"
+#include "Math/vector4.h"
 
 #include <immintrin.h>
 using namespace inituari;
@@ -73,8 +74,8 @@ using namespace inituari;
 		//std::cout << "BEER : " << beer << "\n";
 
 
-		vector3 v{5, 6, 7};
-		vector3 v2;
+		math::Vector3 v{5, 6, 7};
+		math::Vector3 v2;
 		
 		v2 = v;
 

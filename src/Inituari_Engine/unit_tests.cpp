@@ -245,7 +245,7 @@ namespace inituari {
 		ASSERT(!epsilon_compare(0.00003, 0.00004));
 		ASSERT(epsilon_compare(0.000075, 0.00007));//limit
 
-		//sqrt
+		//sqrt not super accurate
 		ASSERT(epsilon_compare(sqrt(16), 4.f, 0.001f));
 		ASSERT(epsilon_compare(sqrt(25), 5.f, 0.001f));
 		ASSERT(epsilon_compare(sqrt(3), 1.73205080757f, 0.001f));

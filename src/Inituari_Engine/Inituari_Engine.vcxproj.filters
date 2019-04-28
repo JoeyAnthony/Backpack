@@ -75,6 +75,15 @@
     <ClInclude Include="Math\math.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="benchmarks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\mat4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\mat3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -120,6 +129,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Math\math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="benchmarks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\mat3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\mat4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

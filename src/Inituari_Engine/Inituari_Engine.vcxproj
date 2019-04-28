@@ -157,10 +157,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="benchmarks.h" />
     <ClInclude Include="Containers\array_list.h" />
     <ClInclude Include="Containers\container_types.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="engine.h" />
+    <ClInclude Include="Math\mat3.h" />
+    <ClInclude Include="Math\mat4.h" />
     <ClInclude Include="Math\math.h" />
     <ClInclude Include="Memory\MallocAllocator.h" />
     <ClInclude Include="Memory\allocators.h" />
@@ -179,9 +182,12 @@
     <ClInclude Include="Math\vector4.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="benchmarks.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Math\mat3.cpp" />
+    <ClCompile Include="Math\mat4.cpp" />
     <ClCompile Include="Math\math.cpp" />
     <ClCompile Include="Memory\allocators.cpp" />
     <ClCompile Include="Memory\MallocAllocator.cpp" />
