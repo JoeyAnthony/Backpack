@@ -34,7 +34,6 @@ namespace inituari {
 		Mat4& transpose(Mat4& a);
 
 		f32 determinant(const Mat4& a);
-		f32 sub_determinant(const Mat4& a, int i, int j);
 
 		Mat4 identity_mat4();
 	}

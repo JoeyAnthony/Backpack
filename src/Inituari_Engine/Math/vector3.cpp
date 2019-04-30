@@ -54,6 +54,14 @@ namespace inituari{
 
 			return a;
 		}
+		Vector3 & operator*=(Vector3 & a, const f32 b)
+		{
+			a.x *= b;
+			a.y *= b;
+			a.z *= b;
+
+			return a;
+		}
 		//bool & operator==(const Vector3 & a, const Vector3 & b)
 		//{
 		//	bool equal = true;

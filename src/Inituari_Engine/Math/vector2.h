@@ -26,16 +26,19 @@ namespace inituari {
 		//vector3 operator/(const vector3& a, const vector3& b);
 
 		/*Multiplies vec and num and returns a new vector*/
-		Vector2 operator*(const Vector2& vec, u32 num);
+		Vector2 operator*(const Vector2& vec, f32 num);
 
 		/*Divides vec and num and returns a new vector*/
-		Vector2 operator/(const Vector2& vec, u32 num);
+		Vector2 operator/(const Vector2& vec, f32 num);
 
 		/*Multiplies a and b*/
 		Vector2& operator*=(Vector2& a, const Vector2& b);
 
 		/*Adds a and b*/
 		Vector2& operator+=(Vector2& a, const Vector2& b);
+
+		/*Multiplies a and b*/
+		Vector2& operator*=(Vector2& a, const f32 num);
 
 		/*Returns true if a and b are equal with an epsilon difference*/
 		//bool& operator==(const vector3& a, const vector3& b);

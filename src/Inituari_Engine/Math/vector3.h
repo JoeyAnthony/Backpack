@@ -48,6 +48,9 @@ namespace inituari {
 		/*Adds a and b*/
 		Vector3& operator+=(Vector3& a, const Vector3& b);
 
+		/*Multiplies a and b*/
+		Vector3& operator*=(Vector3& a, const f32 b);
+
 		/*Returns true if a and b are equal with an epsilon difference*/
 		//bool& operator==(const Vector3& a, const Vector3& b);
 

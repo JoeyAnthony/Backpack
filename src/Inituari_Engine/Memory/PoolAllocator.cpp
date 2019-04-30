@@ -64,7 +64,7 @@ namespace inituari {
 	{
 		//TODO destroy every block
 		m_allocator.deallocate_memory(m_ptr);
-		if(m_currentlyAllocated == 0)
+		if(m_currentlyAllocated != 0)
 			log_manager::log(log_manager::MessageChannel::WARNING, "Not all destructors called");
 	}
 

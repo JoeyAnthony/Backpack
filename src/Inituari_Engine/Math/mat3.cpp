@@ -161,7 +161,11 @@ namespace inituari {
 		}
 		Mat3 & transpose(Mat3 & a)
 		{
-			// TODO: insert return statement here
+			a = Mat3{ a.m00, a.m10, a.m20,
+				 	  a.m01, a.m11, a.m21,
+					  a.m02, a.m12, a.m22 };
+
+			return a;
 		}
 		f32 determinant(const Mat3 & a)
 		{

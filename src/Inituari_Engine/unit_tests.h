@@ -1,5 +1,6 @@
 #pragma once
 #include "debug.h"
+
 namespace inituari
 {
 
@@ -19,4 +20,3 @@ namespace inituari
 
 
 }
-

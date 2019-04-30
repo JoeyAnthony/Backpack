@@ -20,11 +20,11 @@ namespace inituari {
 		{
 			return Vector2{ a.x * b.x, a.y * b.y };
 		}
-		Vector2 operator*(const Vector2 & vec, u32 num)
+		Vector2 operator*(const Vector2 & vec, f32 num)
 		{
 			return Vector2{ vec.x * num, vec.y * num };
 		}
-		Vector2 operator/(const Vector2 & vec, u32 num)
+		Vector2 operator/(const Vector2 & vec, f32 num)
 		{
 			return Vector2{ vec.x / num, vec.y / num };
 		}
@@ -40,6 +40,11 @@ namespace inituari {
 			a.x += b.x;
 			a.y += b.y;
 
+			return a;
+		}
+		Vector2 & operator*=(Vector2 & a, f32 num)
+		{
+			a.x *= num, a.y *= num;
 			return a;
 		}
 		f32 magnitude(const Vector2 & vec)

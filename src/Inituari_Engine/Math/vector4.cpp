@@ -83,6 +83,15 @@ namespace inituari {
 
 			return a;
 		}
+		Vector4 & operator*=(Vector4 & a, const f32 num)
+		{
+			a.x *= num;
+			a.y *= num;
+			a.z *= num;
+			a.w *= num;
+
+			return a;
+		}
 		f32 magnitude(const Vector4 & vec)
 		{
 			return sqrt(vec.x*vec.x + vec.y*vec.y + vec.z*vec.z + vec.w * vec.w);
