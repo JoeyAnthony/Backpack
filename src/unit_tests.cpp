@@ -89,7 +89,7 @@ namespace inituari {
 		malloc_allocator_test();
 		array_list_test();
 		pool_allocator_test();
-		math_test();
+		//math_test();
 	}
 
 	void malloc_allocator_test()
@@ -316,9 +316,9 @@ namespace inituari {
 		ASSERT(math::epsilon_compare(0.000075f, 0.00007f));//limit
 
 		//sqrt not super accurate
-		ASSERT(math::epsilon_compare(sqrt(16), 4.f, 0.001f));
-		ASSERT(math::epsilon_compare(sqrt(25), 5.f, 0.001f));
-		ASSERT(math::epsilon_compare(sqrt(3), 1.73205080757f, 0.001f));
+		ASSERT(math::epsilon_compare(math::sqrt(16), 4.f, 0.001f));
+		ASSERT(math::epsilon_compare(math::sqrt(25), 5.f, 0.001f));
+		ASSERT(math::epsilon_compare(math::sqrt(3), 1.73205080757f, 0.001f));
 
 		{
 			//vector2
@@ -358,29 +358,29 @@ namespace inituari {
 
 		{
 			math::Vector2 vt2{ 1.6f, 56.3f };
-			ASSERT(math::epsilon_compare( math::magnitude(vt2), 56.32273f, 0.01f) && "magnitude went wrong");
+			ASSERT(math::epsilon_compare(math::magnitude(vt2), 56.32273f, 0.01f) && "magnitude went wrong");
 		}
 
 		{
 			math::Vector2 vt2{ 1.6f, 56.3f };
-			ASSERT(math::epsilon_compare( math::magnitude_squared(vt2), (1.6f*1.6f + 56.3f*56.3f)) && "magnitude squared went wrong");
+			ASSERT(math::epsilon_compare(math::magnitude_squared(vt2), (1.6f*1.6f + 56.3f*56.3f)) && "magnitude squared went wrong");
 		}
 
 		{
 			math::Vector2 vt1{ 5.6f, 1.3f };
 			math::Vector2 vt2{ 1.6f, 56.3f };
-			ASSERT(math::epsilon_compare( math::dot(vt1, vt2), 82.15f) && "dot product went wrong");
+			ASSERT(math::epsilon_compare(math::dot(vt1, vt2), 82.15f) && "dot product went wrong");
 		}
 
 		{
 			math::Vector2 vt2{ 1.6f, 56.3f };
-			ASSERT(math::epsilon_compare( math::magnitude(math::unit(vt2)),  1.f, 0.001f) && "unit vector went wrong");
+			ASSERT(math::epsilon_compare(math::magnitude(math::unit(vt2)), 1.f, 0.001f) && "unit vector went wrong");
 		}
 
 		{
 			//vector3
 			math::Vector3 v1{ 5.6f, 1.3f, 8.9f };
-			math::Vector3 v2{ 5.6f, 1.3f, 8.9f};
+			math::Vector3 v2{ 5.6f, 1.3f, 8.9f };
 			math::Vector3 v3{ 1.6f, 56.3f, 2.9f };
 
 			ASSERT(vector3_compare(v1, v2) && "vectors not the same");
@@ -394,7 +394,7 @@ namespace inituari {
 
 		{
 			math::Vector3 vt1{ 5.6f, 1.3f, 8.9f };
-			math::Vector3 vt2{ 1.6f, 56.3f, 2.9f};
+			math::Vector3 vt2{ 1.6f, 56.3f, 2.9f };
 			vt1 *= vt2; //test
 			ASSERT(vector3_compare(vt1, math::vector3(8.96f, 73.19f, 25.81f)) && "multiplying went wrong");
 		}
@@ -429,9 +429,9 @@ namespace inituari {
 
 		{
 			//vector4
-			math::Vector4 v1{ 5.6f, 1.3f, 8.9f, 20.1 };
-			math::Vector4 v2{ 5.6f, 1.3f, 8.9f, 20.1 };
-			math::Vector4 v3{ 1.6f, 56.3f, 2.9f, 38.4 };
+			math::Vector4 v1{ 5.6f, 1.3f, 8.9f, 20.1f };
+			math::Vector4 v2{ 5.6f, 1.3f, 8.9f, 20.1f };
+			math::Vector4 v3{ 1.6f, 56.3f, 2.9f, 38.4f };
 
 			ASSERT(vector4_compare(v1, v2) && "vectors not the same");
 			ASSERT(!vector4_compare(v1, v3) && "vectors must be different");
@@ -444,14 +444,14 @@ namespace inituari {
 
 		{
 			math::Vector4 vt1{ 5.6f, 1.3f, 8.9f, 20.1f };
-			math::Vector4 vt2{ 1.6f, 56.3f, 2.9f, 38.4 };
+			math::Vector4 vt2{ 1.6f, 56.3f, 2.9f, 38.4f };
 			vt1 *= vt2; //test
 			ASSERT(vector4_compare(vt1, math::vector4(8.96f, 73.19f, 25.81f, 771.84f)) && "multiplying went wrong");
 		}
 
 		{
 			math::Vector4 vt1{ 5.6f, 1.3f, 8.9f, 20.1f };
-			math::Vector4 vt2{ 1.6f, 56.3f, 2.9f, 38.4 };
+			math::Vector4 vt2{ 1.6f, 56.3f, 2.9f, 38.4f };
 			vt1 += vt2;//test
 			ASSERT(vector4_compare(vt1, math::vector4(7.2f, 57.6f, 11.8f, 58.5f)) && "adding went wrong");
 		}
@@ -474,7 +474,99 @@ namespace inituari {
 
 		{
 			math::Vector4 vt2{ 1.6f, 56.3f, 2.9f, 38.4f };
-			ASSERT(math::epsilon_compare(math::magnitude(math::unit(vt2)), 1.f, 0.001f) && "unity vector went wrong");
+			ASSERT(math::epsilon_compare(math::magnitude(math::unit(vt2)), 1.f, 0.001f) && "unit vector went wrong");
+		}
+
+		//mat3
+		{
+			math::Mat3 A{5, 8, 574,
+						47, 55, 0,
+						2, 43, 9};
+
+			math::Mat3 B( 9, 6, 7, 
+						25, 33, 77,
+						274, 51, 35); //test constructor
+
+			math::Mat3 C{ 14, 14, 581,
+						72, 88, 77, 
+						276, 94, 44 };
+			ASSERT(matrix_compare((A + B), C) && "matrix addition went wrong");
+			ASSERT( matrix_compare(A+=B, C)  && "matrix addition went wrong");
+
+		}
+
+		{
+			math::Mat3 A{ 5, 8, 574,
+						47, 55, 0,
+						2, 43, 9, };
+
+			math::Mat3 B{ 9, 6, 7,
+						25, 33, 77,
+						274, 51, 35 };
+
+			math::Mat3 C{ -4, 2, 567,
+						22, 22, -77,
+						-272, -8, -26 };
+
+			ASSERT(matrix_compare((A - B), C) && "matrix subtraction went wrong");
+			ASSERT(matrix_compare((A -= B), C) && "matrix subtraction went wrong");
+		}
+
+		{
+			math::Mat3 A{ 5, 8, 574,
+						47, 55, 0,
+						2, 43, 9, };
+
+			math::Mat3 B{ 9, 6, 7,
+						25, 33, 77,
+						274, 51, 35 };
+
+			math::Mat3 C{ 157521, 29568, 20741,
+						1798, 2097, 4564,
+						3559, 1890, 3640 };
+
+			ASSERT(matrix_compare((A * B), C) && "matrix multiplication went wrong");
+			ASSERT(matrix_compare((A *= B), C) && "matrix multiplication went wrong");
+		}
+
+		{
+			math::Mat3 A{ 5, 8, 574,
+						47, 55, 0,
+						2, 43, 9, };
+
+			math::Mat3 C{ -60, -96, -6888,
+						-564, -660, 0,
+						-24, -516, -108 };
+
+			ASSERT(matrix_compare((A * -12), C) && "matrix number multiplication went wrong");
+			
+		}
+
+		{
+			math::Mat3 A{ 5, 8, 574,
+						47, 55, 0,
+						2, 43, 9, };
+			math::Vector3 v{ 1.6f, 56.3f, 2.9f };
+
+			math::Vector3 C{2123.f, 3171.7f, 2450.2};
+			ASSERT(vector3_compare(A * v, C)  && "matrix vector multiplication went wrong");
+		}
+
+		{
+			math::Mat3 A{ 5, 8, 574,
+						47, 55, 0,
+						2, 43, 9, };
+			ASSERT(matrix_compare(math::inverse_of(A) * A, math::identity_mat3()) && "matrix inversion went wrong");
+			ASSERT(matrix_compare(math::invert(A) * A, math::identity_mat3()) && "matrix inversion went wrong");
+		}
+
+		{
+			math::Mat3 A{ 5, 8, 574,
+						47, 55, 0,
+						2, 43, 9, };
+
+			//ASSERT(matrix_compare(math::transpose_of(A) * A, math::identity_mat3()) && "matrix inversion went wrong");
+			//ASSERT(matrix_compare(math::transpose(A) * A, math::identity_mat3()) && "matrix inversion went wrong");
 		}
 		log_manager::log(log_manager::MessageChannel::SYSTEM, "All math tests passed");
 	}

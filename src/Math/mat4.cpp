@@ -179,7 +179,7 @@ namespace inituari {
 
 			return adjugate * (1 / det); //multiply by 1/determinant
 		}
-		Mat4 & inverse(Mat4 & a)
+		Mat4 & invert(Mat4 & a)
 		{
 			//matrix of cofactors
 			f32 m00 = a.m11*(a.m22 * a.m33 - a.m23 * a.m32) - a.m12*(a.m21 * a.m33 - a.m23 * a.m31) + a.m13*(a.m21 * a.m32 - a.m22 * a.m31);

@@ -23,7 +23,7 @@ namespace inituari {
 
 		void deregister_pool_allocator(MemoryManager & mng, PoolAllocator * const alloc)
 		{
-			for (int i = 0; i < array_list::length(mng.m_pool_allocators); i++) {
+			for (u32 i = 0; i < array_list::length(mng.m_pool_allocators); i++) {
 				if (mng.m_pool_allocators[i] == alloc) {
 					array_list::remove_move_last(mng.m_pool_allocators, i);
 				}

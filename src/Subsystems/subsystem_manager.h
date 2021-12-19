@@ -33,3 +33,7 @@ public:
 	inituari::memory_manager::MemoryManager g_memoryManager;
 };
 extern SubsystemManager g_subsystemManager;
+
+namespace IIMath {
+	
+}

@@ -12,7 +12,6 @@
 #include <Windows.h>
 #endif
 
-namespace inituari {
 	namespace log_manager {
 		void log(_Printf_format_string_ const char * fmt, ...)
 		{
@@ -23,7 +22,7 @@ namespace inituari {
 		{
 			switch (tag) {
 			case MessageChannel::SYSTEM:	{ log(tag, 11, fmt); return; }
-			case MessageChannel::MESSAGE:	{ log(tag, 7, fmt); return; }
+			case MessageChannel::MESSAGE:	{ log(tag, 7, fmt); return;	}
 			case MessageChannel::WARNING:	{ log(tag, 14, fmt); return; }
 			case MessageChannel::ASSERT:	{ log(tag, 13, fmt); return; }
 			//case MessageChannel::ERROR:	{ log(tag, 12, fmt); return; }
@@ -93,6 +92,5 @@ namespace inituari {
 			}
 		}
 	}
-}
 
 

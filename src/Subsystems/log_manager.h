@@ -2,24 +2,23 @@
 #include <sstream>
 #include "Containers/container_types.h"
 
-namespace inituari {
+
+	enum class MessageChannel { SYSTEM, MESSAGE, WARNING, ASSERT, ERROR };
+
+	/*struct for easier message passing with function pointers*/
+	struct LogInfo {
+		const char* m_msg;
+		short m_color;
+		MessageChannel m_tag;
+	};
+
+	struct LogManager {
+		//TODO make dynamic array
+		short index = 0;
+		void(*logFunctions[3])(LogInfo const& info);
+	};
+
 	namespace log_manager {
-
-		enum class MessageChannel { SYSTEM, MESSAGE, WARNING, ASSERT, ERROR };
-
-		/*struct for easier message passing with function pointers*/
-		struct LogInfo {
-			const char* m_msg;
-			short m_color;
-			MessageChannel m_tag;
-		};
-
-		struct LogManager {
-			//TODO make dynamic array
-			short index = 0;
-			void(*logFunctions[3])(LogInfo const& info);
-		};
-
 		/*logs a message with all log functions, not implemented*/
 		void log( _Printf_format_string_ const char* fmt, ...);
 
@@ -58,4 +57,3 @@ namespace inituari {
 
 		}// end namespace log_functions_detailed
 	}// end namespace log_manager
-}

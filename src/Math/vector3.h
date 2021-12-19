@@ -1,5 +1,6 @@
 #pragma once
 #include "types.h"
+#include "mat3.h"
 //#define SIMD false;
 
 //#if SIMD
@@ -12,6 +13,8 @@ namespace inituari {
 		struct Vector3
 		{
 			f32 x, y, z;
+			Vector3(): x(0), y(0), z(0) {};
+			Vector3(f32 x, f32 y, f32 z) : x(x), y(y), z(z){};
 		};
 		struct Vector3_simd
 		{
@@ -41,6 +44,14 @@ namespace inituari {
 
 		/*Divides vec and num and returns a new vector*/
 		Vector3 operator/(const Vector3& vec, f32 num);
+
+		inline Vector3 operator*(const Mat3& a, const Vector3& b)
+		{
+			return Vector3{ a.m00 * b.x + a.m01 * b.y + a.m02 * b.z,
+							a.m10 * b.x + a.m11 * b.y + a.m12 * b.z,
+							a.m20 * b.x + a.m21 * b.y + a.m22 * b.z };
+
+		}
 
 		/*Multiplies a and b*/
 		Vector3& operator*=(Vector3& a, const Vector3& b);

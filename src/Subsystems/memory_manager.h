@@ -4,10 +4,6 @@
 #include "Memory/PoolAllocator.h"
 #include "Containers/container_types.h"
 
-
-
-namespace inituari {
-
 	namespace memory_manager
 	{
 		static size_t m_nextAllocatrId;
@@ -32,7 +28,6 @@ namespace inituari {
 		/*Deregisters pool allocator*/
 		void deregister_pool_allocator(MemoryManager& mng, PoolAllocator * const alloc);
 	}
-}
 
 
   

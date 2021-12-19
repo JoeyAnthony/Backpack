@@ -5,7 +5,8 @@
 #include "debug.h"
 #include "Subsystems/log_manager.h"
 
-namespace inituari {
+struct PoolAllocator;
+
 	PoolAllocator::PoolAllocator(memory_manager::MemoryManager& mng, size_t blockSize, size_t amount)
 		:m_currentlyAllocated(0)
 		,m_allocationCalls(0)
@@ -129,4 +130,3 @@ namespace inituari {
 	{
 		return m_deallocationCalls;
 	}
-}

@@ -30,7 +30,7 @@ namespace inituari {
 						 a.m20 * b.m01 + a.m21 * b.m11 + a.m22 * b.m21,		//[] [] []
 						 a.m20 * b.m02 + a.m21 * b.m12 + a.m22 * b.m22 };	//[x] [x] [x]
 		}
-		Mat3 operator*(const Mat3 & a, f32 b)
+		Mat3 operator*(const Mat3 & a, const f32 b)
 		{
 			return Mat3{ a.m00 * b,	a.m01 * b,	a.m02 * b,
 						 a.m10 * b,	a.m11 * b,	a.m12 * b,
@@ -66,21 +66,21 @@ namespace inituari {
 		}
 		Mat3 & operator*=(Mat3 & a, const Mat3 & b)
 		{
-			a.m00 = a.m00 * b.m00 + a.m01 * b.m10 + a.m02 * b.m20;	//[x] [x] [x]
-			a.m01 = a.m00 * b.m01 + a.m01 * b.m11 + a.m02 * b.m21;	//[] [] []
-			a.m02 = a.m00 * b.m02 + a.m01 * b.m12 + a.m02 * b.m22;	//[] [] []
+			a = Mat3{ a.m00 * b.m00 + a.m01 * b.m10 + a.m02 * b.m20,		//[x] [x] [x]
+						 a.m00 * b.m01 + a.m01 * b.m11 + a.m02 * b.m21,		//[] [] []
+						 a.m00 * b.m02 + a.m01 * b.m12 + a.m02 * b.m22,		//[] [] []
 
-			a.m10 = a.m10 * b.m00 + a.m11 * b.m10 + a.m12 * b.m20;	//[] [] []
-			a.m11 = a.m10 * b.m01 + a.m11 * b.m11 + a.m12 * b.m21;	//[x] [x] [x]
-			a.m12 = a.m10 * b.m02 + a.m11 * b.m12 + a.m12 * b.m22;	//[] [] []
+						 a.m10 * b.m00 + a.m11 * b.m10 + a.m12 * b.m20,		//[] [] []
+						 a.m10 * b.m01 + a.m11 * b.m11 + a.m12 * b.m21,		//[x] [x] [x]
+						 a.m10 * b.m02 + a.m11 * b.m12 + a.m12 * b.m22,		//[] [] []
 
-			a.m20 = a.m20 * b.m00 + a.m21 * b.m10 + a.m22 * b.m20;	//[] [] []
-			a.m21 = a.m20 * b.m01 + a.m21 * b.m11 + a.m22 * b.m21;	//[] [] []
-			a.m22 = a.m20 * b.m02 + a.m21 * b.m12 + a.m22 * b.m22;	//[x] [x] [x]
+						 a.m20 * b.m00 + a.m21 * b.m10 + a.m22 * b.m20,		//[] [] []
+						 a.m20 * b.m01 + a.m21 * b.m11 + a.m22 * b.m21,		//[] [] []
+						 a.m20 * b.m02 + a.m21 * b.m12 + a.m22 * b.m22 };	//[x] [x] [x]
 
 			return a;
 		}
-		Mat3 & operator*=(Mat3 & a, f32 b)
+		Mat3 & operator*=(Mat3 & a, const f32 b)
 		{
 			a.m00 *= b;
 			a.m01 *= b;
@@ -94,14 +94,8 @@ namespace inituari {
 
 			return a;
 		}
-		Mat3 operator*(const Mat3 a, Vector3 b)
-		{
-			return Mat3{ a.m00 * b.x, a.m01 * b.y, a.m02 * b.z,
-						 a.m10 * b.x, a.m11 * b.y, a.m12 * b.z,
-						 a.m20 * b.x, a.m21 * b.y, a.m22 * b.z };
 
-		}
-		Mat3 inverse(const Mat3 a)
+		Mat3 inverse_of (const Mat3 a)
 		{
 			f32 m00 = a.m11 * a.m22 - a.m12 * a.m21;
 			f32 m01 = -(a.m10 * a.m22 - a.m12 * a.m20);
@@ -125,7 +119,7 @@ namespace inituari {
 
 			return adjugate * (1 / det);
 		}
-		Mat3 & inverse(Mat3 & a)
+		Mat3 & invert(Mat3 & a)
 		{
 			//matrix of cofactors
 			f32 m00 = a.m11 * a.m22 - a.m12 * a.m21;
@@ -153,7 +147,7 @@ namespace inituari {
 
 			return a;
 		}
-		Mat3 transpose(const Mat3 a)
+		Mat3 transpose_of(const Mat3 a)
 		{
 			return { a.m00, a.m10, a.m20,
 					 a.m01, a.m11, a.m21,
