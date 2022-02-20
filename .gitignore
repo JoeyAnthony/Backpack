@@ -1,3 +1,3 @@
 *.vpp*
-*.zargo
+*.zargo*
 /build

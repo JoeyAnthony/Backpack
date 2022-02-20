@@ -1,55 +1,36 @@
-cmake_minimum_required (VERSION 3.22.1)
-project (Inituari)
+cmake_minimum_required(VERSION 3.7...3.22)
 
-set (CORE
-	./src/benchmarks.h
-	./src/benchmarks.cpp
-	./src/debug.h
-	./src/debug.cpp
-	./src/engine.h
-	./src/engine.cpp
-	./src/main.cpp
-	./src/os.h
-	./src/pch.h
-	./src/pch.cpp
-	./src/types.h
-	./src/unit_tests.h
-	./src/unit_tests.cpp
+if(${CMAKE_VERSION} VERSION_LESS 3.12)
+    cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
+endif()
 
-	./src/Containers/array_list.h
-	./src/Containers/array_list.cpp
-	./src/Containers/container_types.h
+# set the project name and version
+project(Backpack VERSION 1.0
+		DESCRIPTION "A Runtime Game Engine"
+		LANGUAGES CXX)
 
-	./src/Memory/memory_tools.h
-	./src/Memory/allocators.h
-	./src/Memory/allocators.cpp
-	./src/Memory/MallocAllocator.h
-	./src/Memory/MallocAllocator.cpp
-	./src/Memory/PoolAllocator.h
-	./src/Memory/PoolAllocator.cpp
+# specify the C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-	./src/Subsystems/log_manager.h
-	./src/Subsystems/log_manager.cpp
-	./src/Subsystems/memory_manager.h
-	./src/Subsystems/memory_manager.cpp
-	./src/Subsystems/subsystem_manager.h
-	./src/Subsystems/subsystem_manager.cpp
+# Build library
+add_subdirectory(systems)
+
+set (CMAKE_CURRENT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/backpack/)
+
+set (GAME_PROJECT
+	main.cpp
+	unit_tests.h
+	unit_tests.cpp
 )
+# prepend path before source files
+list(TRANSFORM GAME_PROJECT PREPEND "./backpack/")
 
-set (MyMath 
-	./src/Math/math_types.h
-	./src/Math/mat3.h
-	./src/Math/mat3.cpp
-	./src/Math/mat4.h
-	./src/Math/mat4.cpp
-	./src/Math/math.h
-	./src/Math/math.cpp
-	./src/Math/vector2.h
-	./src/Math/vector2.cpp
-	./src/Math/vector3.h
-	./src/Math/vector3.cpp
-	./src/Math/vector4.h
-	./src/Math/vector4.cpp
-)
+# Create project
+add_executable (${PROJECT_NAME} ${GAME_PROJECT})
 
-add_executable (Inituari ${CORE} ${MyMath})
+# Link Library
+target_link_libraries(${PROJECT_NAME} PRIVATE core)
+
+# Defenitions
+#target_compile_definitions(${PROJECT_NAME} PUBLIC ASSERTIONS_ENABLED)
