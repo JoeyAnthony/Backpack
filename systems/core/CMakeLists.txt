@@ -61,6 +61,8 @@ list(TRANSFORM ALLOCATORS PREPEND "./memory/")
 set (SUBSYSTEMS
 	log_manager.h
 	log_manager.cpp
+	logger.h
+	logger.cpp
 	memory_manager.h
 	memory_manager.cpp
 	subsystem_manager.h

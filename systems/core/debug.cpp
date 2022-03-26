@@ -3,7 +3,7 @@
 
 void assert_fail(const char* file, int line, const char* fmt, ...)
 {
-	log_manager::log(MessageChannel::ASSERT, fmt);
-	log_manager::log(MessageChannel::ASSERT, "FILE: %c : LINE %i", file, line);
+	backpack::LOG_S(BP_ASSERT) << fmt;
+	backpack::LOG_S(BP_ASSERT) << "FILE: %c : LINE %i", file, line;
 	debug_break();
 }

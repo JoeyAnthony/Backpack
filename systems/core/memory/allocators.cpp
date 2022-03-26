@@ -3,6 +3,6 @@
 
 Allocator::Allocator(Allocator const& alloc)
 {
-	log_manager::log(MessageChannel::WARNING, "Copying allocator! Better not do this");
+	backpack::LOG_S(BP_WARNING) << "Copying allocator! Better not do this";
 }
 

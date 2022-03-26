@@ -26,7 +26,6 @@ namespace backpack {
 //Subsystem manager global
 struct SubsystemManager {
 public:
-	LogManager g_logManager;
 	MemoryManager g_memoryManager;
 };
 extern SubsystemManager g_subsystemManager;
