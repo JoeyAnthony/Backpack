@@ -3,12 +3,9 @@
 #include "types.h"
 #include "debug.h"
 #include "memory/memory_tools.h"
+#include "subsystems/log_manager.h"
 
 struct Allocator;
-
-namespace log_manager{
-	void log(_Printf_format_string_ const char* fmt, ...);
-}
 
 #define INITIAL_ARRAY_SIZE 8
 
@@ -208,7 +205,7 @@ namespace array_list {
 		{
 			//arr[m_count - 1] = nullptr;
 			if (arr.m_count <= 0) {
-				log_manager::log("array empty!");
+				backpack::LOG << "array empty!";
 				return;
 			}
 			arr.m_count--;
@@ -218,7 +215,7 @@ namespace array_list {
 		inline void remove(ArrayList<T>& arr, u32 index)
 		{
 			if (index < 0 || index > arr.m_count) {
-				log_manager::log("out of bounds!");
+				backpack::LOG << "out of bounds!";
 				return;
 			}
 			memory_tools::shift(arr.m_memBlock+index+1, arr.m_count - index, -1);
@@ -230,7 +227,7 @@ namespace array_list {
 		inline void remove_move_last(ArrayList<T>& arr, u32 index)
 		{
 			if (index < 0 || index > arr.m_count - 1) {
-				log_manager::log("out of bounds!");
+				backpack::LOG << "out of bounds!";
 				return;
 			}
 			memory_tools::memMove<T>(&arr[index], end(arr), 1);

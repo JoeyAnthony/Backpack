@@ -20,18 +20,23 @@ using namespace backpack;
 
 	int main()
 	{
-		std::cout << "Hello World!\n";
+		LOG << "Hello World!\n";
 
-		std::cout << "bytes_s32: " << sizeof(int32_t) << "\n";
-		std::cout << "bytes_s64: " << sizeof(int64_t) << "\n";
-		std::cout << "bytes_int: " << sizeof(int) << "\n";
-		std::cout << "bytes_size_t: " << sizeof(size_t) << "\n";
-		std::cout << "bytes_size_t*: " << sizeof(size_t*) << "\n";
-		std::cout << "bytes_char: " << sizeof(char) << "\n";
-		std::cout << "bytes_short: " << sizeof(short) << "\n";
+		//for (int k = 1; k < 255; k++)
+		//{
+		//	BP_LOG(BP_INFO, k) << "noooo";
+		//}
 
-		std::cout << "bytes_Allocator: " << sizeof(Allocator) << "\n";
-		std::cout << "bytes_MallocAllocator: " << sizeof(MallocAllocator) << "\n";
+		LOG << "bytes_s32: " << sizeof(int32_t);
+		LOG << "bytes_s64: " << sizeof(int64_t);
+		LOG << "bytes_int: " << sizeof(int);
+		LOG << "bytes_size_t: " << sizeof(size_t);
+		LOG << "bytes_size_t*: " << sizeof(size_t*);
+		LOG << "bytes_char: " << sizeof(char);
+		LOG << "bytes_short: " << sizeof(short);
+
+		LOG << "bytes_Allocator: " << sizeof(Allocator);
+		LOG << "bytes_MallocAllocator: " << sizeof(MallocAllocator);
 
 		backpack::INIT_ENGINE();
 		run_all_tests();
@@ -39,36 +44,34 @@ using namespace backpack;
 
 		MallocAllocator alloc;
 
-		//inituari::ArrayList<s32> a(&alloc);
-		//array_list::push_back(a, 4);
+		ArrayList<s32> a(&alloc);
+		array_list::push_back(a, 4);
 
-		////inituari::ArrayList<s32> b = a;
+		//inituari::ArrayList<s32> b = a;
+		
+		LOG << "rftrfh";
+		LOG << "nfhhsoooo";
+		LOG << "nosfghfooo";
+		LOG << "nofdooo";
+		LOG << "nofdo " << 5 << " oo";
+		BP_LOG(BP_INFO, RED) << "df";
+		BP_LOG(BP_INFO, BLUE) << "df";
+		BP_LOG(BP_INFO, YELLOW) << "noooo";
+		BP_LOG(BP_INFO, CYAN) << "noooo";
+		BP_LOG(BP_INFO, PURPLE) << "noodfgdfgdfgoo";
+		BP_LOG(BP_INFO, RED) << "noooo";
 
+		LOG << "address main : " << &alloc;
+		//std::cout << "address list : " << &g_subsystemManager.g_memoryManager.allocators[0] <<"\n" ;
+		int beer = 4;
+		int* aap = new int(7);
 
-		//log_manager::log("noooo");
-		//log_manager::log("rftrfh");
-		//log_manager::log("nfhhsoooo");
-		//log_manager::log("nosfghfooo");
-		//log_manager::log("nofdooo");
-		//log_manager::log("nofdo %i oo", 5);
-		//log_manager::log("df");
-		//log_manager::log("df");
-		//log_manager::log("noooo");
-		//log_manager::log("noooo");
-		//log_manager::log("noodfgdfgdfgoo");
-
-
-		//std::cout << "address main : " << &alloc << "\n";
-		////std::cout << "address list : " << &g_subsystemManager.g_memoryManager.allocators[0] <<"\n" ;
-		//int beer = 4;
-		//int* aap = new int(7);
-
-		////aap = &beer; //pointer itself
-		//*aap = 6; //value of pointer
+		//aap = &beer; //pointer itself
+		*aap = 6; //value of pointer
 
 
-		//std::cout << "AAP : " << *aap << "\n";
-		//std::cout << "BEER : " << beer << "\n";
+		LOG << *aap;
+		LOG <<  beer ;
 
 
 		math::Vector3 v{5, 6, 7};
@@ -76,11 +79,11 @@ using namespace backpack;
 		
 		v2 = v;
 
-		std::cout << "v : " << v.x << " " << v.y << " " << v.z << "\n";
-		std::cout << "v2 : " << v2.x << " " << v2.y << " " << v2.z << "\n";
+		LOG << "v : " << v.x << " " << v.y << " " << v.z;
+		LOG << "v2 : " << v2.x << " " << v2.y << " " << v2.z;
 
-		std::cout << "v : " << &v << "\n";
-		std::cout << "v2 : " << &v2 << "\n";
+		LOG << "v : " << &v;
+		LOG << "v2 : " << &v2;
 
 		return 0;
 	}

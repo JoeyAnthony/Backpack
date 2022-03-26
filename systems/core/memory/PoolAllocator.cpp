@@ -65,19 +65,19 @@ PoolAllocator::~PoolAllocator()
 	//TODO destroy every block
 	m_allocator.deallocate_memory(m_ptr);
 	if (m_currentlyAllocated != 0)
-		log_manager::log(MessageChannel::WARNING, "Not all destructors called");
+		backpack::LOG_S(BP_WARNING) << "Not all destructors called";
 }
 
 void* PoolAllocator::allocate_memory(size_t blockSize)
 {
 	ASSERT(memory_tools::align_bytes(blockSize) == m_blockSize && "Blocks not the same size!");
 	if (memory_tools::align_bytes(blockSize) != m_blockSize) {
-		log_manager::log(MessageChannel::ERROR, "Blocks not the same size!");
+		backpack::LOG_S(BP_ERROR) << "Blocks not the same size!";
 		return nullptr;
 	}
 
 	if (m_currentlyAllocated == m_poolSize) {
-		log_manager::log(MessageChannel::ERROR, "No blocks left!");
+		backpack::LOG_S(BP_ERROR) << "No blocks left!";
 		return nullptr;
 	}
 

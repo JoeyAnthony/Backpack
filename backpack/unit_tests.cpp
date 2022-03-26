@@ -118,7 +118,7 @@ namespace backpack {
 			alloc.deallocate_memory(ptrs[i]);
 		}
 		ASSERT(alloc.currently_allocated() == 0);
-		log_manager::log(MessageChannel::SYSTEM, "MallocAllocator passed all tests");
+		backpack::LOG_S(BP_SYSTEM) << "MallocAllocator passed all tests";
 	}
 
 	struct PoolTestOne {
@@ -206,7 +206,7 @@ namespace backpack {
 		//	}
 		//}
 
-		log_manager::log(MessageChannel::SYSTEM, "PoolAllocator passed all tests");
+		backpack::LOG_S(BP_SYSTEM) << "PoolAllocator passed all tests";
 	}
 
 	void array_list_test()
@@ -295,7 +295,7 @@ namespace backpack {
 
 		//ArrayList<int> l2 = ArrayList<int>();
 
-		log_manager::log(MessageChannel::SYSTEM, "ArrayList passed all tests");
+		backpack::LOG_S(BP_SYSTEM) << "ArrayList passed all tests";
 	}
 
 	void math_test()
@@ -565,7 +565,7 @@ namespace backpack {
 			//ASSERT(matrix_compare(math::transpose_of(A) * A, math::identity_mat3()) && "matrix inversion went wrong");
 			//ASSERT(matrix_compare(math::transpose(A) * A, math::identity_mat3()) && "matrix inversion went wrong");
 		}
-		log_manager::log(MessageChannel::SYSTEM, "All math tests passed");
+		backpack::LOG_S(BP_SYSTEM) << "All math tests passed";
 	}
 
 	void memory_manager_test()
