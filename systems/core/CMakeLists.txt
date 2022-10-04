@@ -8,6 +8,8 @@ set (CORE
 	debug.cpp
 	engine.h
 	engine.cpp
+	timer.h
+	timer.cpp
 )
 # prepend path before source files
 #list(TRANSFORM CORE PREPEND "./core/")
@@ -71,8 +73,18 @@ set (SUBSYSTEMS
 # prepend path before source files
 list(TRANSFORM SUBSYSTEMS PREPEND "./subsystems/")
 
+# World files
+set (WORLD
+	world.h
+	world.cpp
+	updateloop.h
+	updateloop.cpp
+)
+# prepend path before source files
+list(TRANSFORM WORLD PREPEND "./World/")
+
 # Add library
-add_library (core ${CORE} ${CONTAINER_TYPES} ${MATH_TYPES} ${ALLOCATORS} ${SUBSYSTEMS})
+add_library (core ${CORE} ${CONTAINER_TYPES} ${MATH_TYPES} ${ALLOCATORS} ${SUBSYSTEMS} ${WORLD})
 
 # Add includes
 target_include_directories(core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/)
@@ -83,6 +95,7 @@ source_group("containers" 	FILES ${CONTAINER_TYPES})
 source_group("maths"		FILES ${MATH_TYPES})
 source_group("allocators" 	FILES ${ALLOCATORS})
 source_group("subsystems" 	FILES ${SUBSYSTEMS})
+source_group("world" 		FILES ${WORLD})
 
 # Dependencies
 #target_link_libraries(core PRIVATE subsystems)

@@ -1,4 +1,4 @@
-// Inituari_Engine.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// main.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
@@ -11,6 +11,7 @@
 #include "subsystems/log_manager.h"
 #include "subsystems/subsystem_manager.h"
 #include <vector>
+#include <chrono>
 
 #include "Math/vector3.h"
 #include "Math/vector4.h"
@@ -18,9 +19,87 @@
 #include <immintrin.h>
 using namespace backpack;
 
+class OOPComponent {
+	virtual void update() = 0;
+};
+class HealthComponent: public OOPComponent {
+	float health = 100;
+public:
+	void update() override {
+		health -= (std::rand() % 50);
+	}
+	bool isDead() {
+		if (health <= 0) {
+			return true;
+		}
+		return false;
+	}
+};
+class OOPTest {
+	float x = 15;
+	float y = 80;
+	float z = 90;
+	float x2 = 15;
+	float y2 = 80;
+	float z2 = 90;
+	float x3 = 15;
+	float y3 = 80;
+	float z3 = 90;
+	float x4 = 15;
+	float y4 = 80;
+	float z4 = 90;
+
+	HealthComponent health;
+public:
+	bool alive = true;
+	void update() {
+		health.update();
+		if (health.isDead()) {
+			alive = false;
+		}
+	}
+};
+
+class Test {
+	std::vector<OOPTest*> oop;
+	uint32_t objectCount = 100000;
+	uint64_t iterations = 1000000;
+	std::chrono::high_resolution_clock::duration OOPElapsed;
+
+public:
+	void ExecuteOOPTest() {
+		for (int i = 0; 0 < objectCount; i++) {
+			oop.push_back(new OOPTest());
+		}
+
+		std::chrono::high_resolution_clock::time_point before = std::chrono::high_resolution_clock::now();
+		for (int itr = 0; 0 < iterations; itr++) {
+			// update loop
+			int size = oop.size();
+			for (int i = 0; i < size; i++) {
+				oop[i]->update();
+				if (!oop[i]->alive) {
+					oop.erase(oop.begin() + i);
+				}
+			}
+			int addUp = objectCount - oop.size();
+			for (int i = 0; 0 < addUp; i++) {
+				oop.push_back(new OOPTest());
+			}
+		}
+		oop.clear();
+
+		std::chrono::high_resolution_clock::time_point after = std::chrono::high_resolution_clock::now();
+		OOPElapsed = after - before;
+	}
+};
+
 	int main()
 	{
-		LOG << "Hello World!\n";
+		Test t;		
+		t.ExecuteOOPTest();
+
+		std::cout << "Hello World!\n";
 
 		//for (int k = 1; k < 255; k++)
 		//{
